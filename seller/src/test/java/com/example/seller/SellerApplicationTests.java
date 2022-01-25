@@ -1,10 +1,10 @@
-package com.example.warnning;
+package com.example.seller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WarnningApplicationTests {
+class SellerApplicationTests {
 
     @Test
     void contextLoads() {
