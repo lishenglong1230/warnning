@@ -1,5 +1,6 @@
-package com.example.assess.Es;
+package com.example.assess;
 
+import com.example.assess.Es.ESClient;
 import com.example.assess.entity.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class Demo {
     ObjectMapper mapper=new ObjectMapper();
     RestHighLevelClient client= ESClient.getClient();
-    String index="person";
+    String index="assess";
     String type="man";
 
     @Test
@@ -37,8 +38,6 @@ public class Demo {
 
         //通过client对象执行添加
         IndexResponse response = client.index(request, RequestOptions.DEFAULT);
-
-
         //输出返回结果
         System.out.println(response.getResult().toString());
     }
@@ -70,7 +69,7 @@ public class Demo {
     }
 
     @Test
-    /*批量添加数据*/
+   /* 批量添加数据*/
     public  void  add() throws Exception {
         Person p1=new Person(1,"张三",23,new Date());
         Person p2=new Person(2,"李四",23,new Date());
@@ -92,7 +91,7 @@ public class Demo {
     }
 
     @Test
-    /*批量删除数据*/
+  /*  批量删除数据*/
     public  void DeleteDoc() throws Exception {
 //封装对象
         BulkRequest request=new BulkRequest();
