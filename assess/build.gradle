@@ -1,41 +1,10 @@
-plugins {
-    id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-}
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'junit:junit:4.13.1'
-    implementation 'org.projectlombok:lombok:1.18.20'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.5.5'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
-    implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.6.1'
-
-    // https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch
-    implementation group: 'org.elasticsearch', name: 'elasticsearch', version: '7.8.0'
-
-    // https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client
-    implementation group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '7.8.0'
-
-
-
-
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }

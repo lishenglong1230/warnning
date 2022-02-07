@@ -1,24 +1,55 @@
-plugins {
-    id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
+//编译时用到的依赖
+buildscript {
+
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
+    }
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-    mavenLocal()
-    maven { url 'https://maven.aliyun.com/repository/central' }
-    mavenCentral()
+//project全局的版本及相关插件
+allprojects {
+    group 'com.example'
+    version '0.0.1-SNAPSHOT'
+    apply plugin: 'idea'
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+//子项目相关依赖和插件
+subprojects {
+    apply plugin: 'java'
+    // 指定JDK版本
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    // 指定编码格式
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven{ url 'https://maven.aliyun.com/repository/central'}
+        mavenCentral()
+    }
 
-tasks.named('test') {
-    useJUnitPlatform()
+    dependencies {
+        // Apache Commons
+        /*compile("org.apache.commons:commons-lang3:3.8.1")
+        // 单元测试
+        testCompile("org.springframework.boot:spring-boot-starter-test:${spring_boot_version}")
+        testCompile("junit:junit:4.12")
+        compile("org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}")
+        compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}"){
+            exclude group: 'org.slf4j',module: 'slf4j-log4j12'
+        }*/
+        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        runtimeOnly 'mysql:mysql-connector-java'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testCompile("junit:junit:4.12")
+        compile("org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}")
+        compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}")
+    }
 }

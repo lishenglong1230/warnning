@@ -1,1 +1,8 @@
 rootProject.name = 'warnning'
+include 'alarm'
+include 'assess'
+include 'chat'
+include 'buyers'
+include 'seller'
+include 'seller'
+
