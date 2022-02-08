@@ -1,6 +1,6 @@
 package com.example.assess.entity;
 
-public class car {
+public class Car {
     private String brand;
     private String series;
     private String rate;

@@ -1,6 +1,6 @@
 package com.example.assess.entity;
 
-public class oss {
+public class Oss {
     private String invoice;
     private String certificate;
     private String accident;

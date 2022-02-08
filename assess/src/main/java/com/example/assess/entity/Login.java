@@ -1,6 +1,6 @@
 package com.example.assess.entity;
 
-public class login {
+public class Login {
     private String phone;
     private String code;
 

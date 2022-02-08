@@ -1,6 +1,6 @@
 package com.example.assess.entity;
 
-public class carinfo {
+public class Carinfo {
     private String coty;
     private String mileage;
     private String national;
@@ -11,6 +11,19 @@ public class carinfo {
     private String allocation;
     private String seat;
     private String date;
+
+    public Carinfo(String coty, String mileage, String national, String gearbox, String displacement, String drive, String fuel, String allocation, String seat, String date) {
+        this.coty = coty;
+        this.mileage = mileage;
+        this.national = national;
+        this.gearbox = gearbox;
+        this.displacement = displacement;
+        this.drive = drive;
+        this.fuel = fuel;
+        this.allocation = allocation;
+        this.seat = seat;
+        this.date = date;
+    }
 
     public String getCoty() {
         return coty;
