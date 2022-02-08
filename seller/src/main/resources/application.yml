@@ -1,0 +1,18 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: didi-demo
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+  mvc:
+    static-path-pattern=/static/**:
+  datasource:
+    url: jdbc:mysql://localhost:3306/aaa
+    username: root
+    password: lwy0328
+    driver-class-name: com.mysql.cj.jdbc.Driver
