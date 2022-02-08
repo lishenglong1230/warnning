@@ -1,9 +1,14 @@
 package com.example.seller.dao;
 
+import com.example.seller.entity.User;
 import com.example.seller.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Repository
 public class UserDao implements UserService {
@@ -12,13 +17,38 @@ public class UserDao implements UserService {
 
     @Override
     public int create(String username,String password) {
-        return jdbcTemplate.update("insert into user(username,password)values (?,?)",username,password);
+        return jdbcTemplate.update("insert into login(username,password)values (?,?)",username,password);
     }
 
     @Override
     public void deleteByName(String username) {
-        jdbcTemplate.update("delete from user where username = ?", username);
+        jdbcTemplate.update("delete from login where username = ?", username);
     }
 
+    public User findByName(String name) {
+        final User user = new User();
+        String sql = "SELECT username FROM user WHERE username=?";
+        jdbcTemplate.query(sql, new Object[]{name}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                user.setUsername(resultSet.getString(1));
+            }
+        });
+        return user;
+    }
+
+    @Override
+    public User findByNameAndPassword(String username, String password) {
+        final User user = new User();
+        String sql = "SELECT * FROM user WHERE username=? AND password=?";
+        jdbcTemplate.query(sql, new Object[]{username, password}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                user.setUsername(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+            }
+        });
+        return user;
+    }
 
 }

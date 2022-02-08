@@ -1,6 +1,5 @@
 package test;
 
-import com.example.seller.util.ChitUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
