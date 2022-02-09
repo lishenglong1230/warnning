@@ -1,8 +1,18 @@
 server:
   port: 8080
 spring:
+  application:
+    name: assess
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+  mvc:
+    static-path-pattern=/static/**:
   datasource:
     url: jdbc:mysql://localhost:3306/Car?useUnicode=true&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC&characterEncoding=utf8
     username: root
     password: lxjroot
     driver-class-name: com.mysql.cj.jdbc.Driver
+

@@ -3,16 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script>
+		function login(){
+			$.ajax({
+				url: "/login",
+				type: 'POST',
+				data: {'username': $("#username").val(), 'password': $("#password").val()},
+				success: function (res) {
+					if(res=="success"){
+						function login(){
+							window.location.href='demo1';
+						}
+						login()
+					}else{
+						console.log(res);
+						alert("error");
+					}
+				},
+				error: function (res) {
+					console.log(res)
+					alert("error!!!!!")
+				}
+			});
+		}
+
+	</script>
 </head>
 <body>
-<center>
-	<h1>请登录</h1>
-	<form action="/sso/doLogin" method="post">
-		<input type="hidden" name="gotoUrl" value="${gotoUrl}"/>
-		<span>用户名：</span><input type="text" name="username"/>
-		<span>密    码：</span><input type="password" name="password"/>
-		<input type="submit">
+<div class="boxx">
+	<form class="box" onsubmit="return false" action="##" method="get">
+		<h1>Login</h1>
+		<input type="text"id="username"placeholder="UserName" name="username"/>
+		<input type="password"id="password"placeholder="UserPassword" />
+		<input type="submit"  value="Login" onclick="login()"/>
+
 	</form>
-</center>
+	<div class="right">
+		<h1>Welcome to Didi job platform</h1>
+		<p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>
+		<p>Not registered yet? Click here to <a href="register" class="register">register</a> </p>
+		<p><a href="ReturnPasswd" >Forget your password? Click here to retrieve the password</a> </p>
+	</div>
+</div>
 </body>
 </html>

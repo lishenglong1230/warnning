@@ -14,4 +14,8 @@ public class RegisterServiceImpl {
     public int userinsert(String username,String password){
         return registerDao.userInsert(new Login(username,password));
     }
+    public Login FindNamePasswd(String username,String password){
+        return registerDao.findByNameAndPassword(username,password);
+    }
+
 }
