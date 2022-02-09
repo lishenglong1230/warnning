@@ -9,10 +9,9 @@ public interface CarService {
      * @param model
      * @param colour
      * @param place
-     * @param phone
      * @return
      */
-    int insertCar(String brand,String series,String rate,String model,String colour,String place,String phone);
+    int insertCar(String brand,String series,String rate,String model,String colour,String place);
 
     /**
      * 添加车详细信息

@@ -16,8 +16,8 @@ public class UserDao implements UserService {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int create(String username,String password) {
-        return jdbcTemplate.update("insert into login(username,password)values (?,?)",username,password);
+    public int create(String username,String password,String phone) {
+        return jdbcTemplate.update("insert into login(username,password,phone)values (?,?,?)",username,password,phone);
     }
 
     @Override

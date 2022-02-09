@@ -9,8 +9,8 @@ public class CarServiceImpl {
     @Autowired
     private CarDao carDao;
 
-    public int insertCar(String brand,String series,String rate,String model,String colour,String place,String phone){
-        return carDao.insertCar(brand,series,rate,model,colour,place,phone);
+    public int insertCar(String brand,String series,String rate,String model,String colour,String place){
+        return carDao.insertCar(brand,series,rate,model,colour,place);
     }
 
     public int insertCarInfo(String coty,String mileage,String national,String gearbox,String displacement,String drive,String fuel,String allocation,String seat,String date){

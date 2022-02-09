@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl{
     @Autowired
     private UserDao userDao;
-    public int insertUser(String username,String password){
-        return userDao.create(username,password);
+    public int insertUser(String username,String password,String phone){
+        return userDao.create(username,password,phone);
     }
     public User findByName(String name){
         return userDao.findByName(name);

@@ -8,7 +8,7 @@ public interface UserService {
      * 新增一个用户
      *
      */
-    int create(String username,String Password);
+    int create(String username,String Password,String phone);
 
 
   /**
