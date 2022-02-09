@@ -1,7 +1,7 @@
 package com.example.buyers.tools;
 
 
-import com.example.buyers.encrypt.MD5;
+import com.example.buyer.encrypt.MD5;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

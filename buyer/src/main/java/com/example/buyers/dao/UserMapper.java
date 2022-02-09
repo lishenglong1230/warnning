@@ -1,6 +1,6 @@
 package com.example.buyers.dao;
 
-import com.example.buyers.pojo.User;
+import com.example.buyer.pojo.User;
 
 public interface UserMapper {
 	//通过id删除
@@ -25,9 +25,8 @@ public interface UserMapper {
     User selectByPhone(String phone);
 
     //查询用户名是否被占用
-    User selectByName(String name);
+    User selectByUserName(String username);
 
-    
     //用户登录 根据手机号和密码查询
     User selectByLogin(User user);
     
