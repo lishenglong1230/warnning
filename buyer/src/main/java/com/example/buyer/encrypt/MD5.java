@@ -1,4 +1,4 @@
-package com.example.buyers.encrypt;
+package com.example.buyer.encrypt;
 
 import java.security.MessageDigest;
 

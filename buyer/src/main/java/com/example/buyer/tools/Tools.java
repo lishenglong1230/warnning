@@ -1,4 +1,4 @@
-package com.example.buyers.tools;
+package com.example.buyer.tools;
 
 
 import com.example.buyer.encrypt.MD5;

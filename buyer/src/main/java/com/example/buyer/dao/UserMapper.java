@@ -1,4 +1,4 @@
-package com.example.buyers.dao;
+package com.example.buyer.dao;
 
 import com.example.buyer.pojo.User;
 

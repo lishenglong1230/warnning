@@ -1,4 +1,4 @@
-package com.example.buyers.controller;
+package com.example.buyer.controller;
 
 import com.example.buyer.service.UserService;
 import org.springframework.stereotype.Controller;

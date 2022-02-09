@@ -1,4 +1,4 @@
-package com.example.buyers.service.impl;
+package com.example.buyer.service.impl;
 
 
 import com.example.buyer.dao.UserMapper;
@@ -102,21 +102,21 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Map<String, Object> changeUserinfo(String id, String username, String phone) {
-        Map<String,Object> map=new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         //调用mapper的方法修改信息
-        User u=new User();
+        User u = new User();
         u.setId(id);
         u.setUserName(username);
         u.setPhone(phone);
-        int i=usermapper.updateByPrimaryKeySelective(u);
-        if(i>=1){
+        int i = usermapper.updateByPrimaryKeySelective(u);
+        if (i >= 1) {
             //修改成功
             //查询用户信息
-            User user=usermapper.selectByPrimaryKey(id);
+            User user = usermapper.selectByPrimaryKey(id);
             map.put("status", "0");
             map.put("msg", "修改成功");
             map.put("data", user);
-        }else{
+        } else {
             //修改失败
             map.put("status", "1");
             map.put("msg", "修改失败");
@@ -130,16 +130,19 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Map<String, Object> modifyPassword(String id, String oldpassword, String newpassword) {
-        Map<String,Object> map=new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         //查看原密码是否输入正确
         //密码加密
         //oldpassword=Tools.getMD5(oldpassword);
         //newpassword=Tools.getMD5(newpassword);
-        User u=new User();
+        oldpassword = Base64.getEncoder().encodeToString(oldpassword.getBytes(StandardCharsets.UTF_8));
+        newpassword = Base64.getEncoder().encodeToString(newpassword.getBytes(StandardCharsets.UTF_8));
+
+        User u = new User();
         u.setId(id);
         u.setPassword(oldpassword);
-        User use=usermapper.selectByIdAndPassword(u);
-        if(use==null){
+        User use = usermapper.selectByIdAndPassword(u);
+        if (use == null) {
             //密码错误
             map.put("status", "2");
             map.put("msg", "原密码输入错误");
@@ -147,16 +150,16 @@ public class UserServiceImpl implements UserService {
             return map;
         }
         //原密码正确,修改密码
-        User user=new User();
+        User user = new User();
         user.setId(id);
         user.setPassword(newpassword);
-        int i=usermapper.updatePassword(user);
-        if(i>=1){
+        int i = usermapper.updatePassword(user);
+        if (i >= 1) {
             //修改成功
             map.put("status", "0");
             map.put("msg", "修改成功");
             map.put("data", null);
-        }else{
+        } else {
             //修改失败
             map.put("status", "1");
             map.put("msg", "修改失败");
@@ -164,7 +167,6 @@ public class UserServiceImpl implements UserService {
         }
         return map;
     }
-
 
 
 }

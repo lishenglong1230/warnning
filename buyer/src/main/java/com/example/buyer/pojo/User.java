@@ -1,4 +1,4 @@
-package com.example.buyers.pojo;
+package com.example.buyer.pojo;
 
 public class User {
     private String id;

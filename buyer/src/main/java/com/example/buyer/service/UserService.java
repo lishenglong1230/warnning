@@ -1,4 +1,4 @@
-package com.example.buyers.service;
+package com.example.buyer.service;
 
 import java.util.Map;
 
