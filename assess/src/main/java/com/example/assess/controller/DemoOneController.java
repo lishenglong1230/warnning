@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 
 /**
@@ -42,8 +43,14 @@ public class DemoOneController {
     @PostMapping(value = "/login")
     @ResponseBody
     public String demo1(HttpServletRequest request, HttpServletResponse response, String username, String password) {
-    /*    if (CookieUtil.getCookies(request)!=null){
+        Map<String, String> map = CookieUtil.getCookies(request);
+        if (map.get(username)!=null){
+
             return "success";
+        }
+   /*     Map<String, String> cookies = CookieUtil.getCookies(request);
+        for (int i=0;i<=cookies.size();i++){
+            System.out.println(cookies.get(i));
         }*/
         CodeUtil utilCode=new CodeUtil();
          s = utilCode.verifyCode();
