@@ -5,6 +5,8 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     //common
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    //oss
+    implementation group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '3.13.0'
 
 }
 
