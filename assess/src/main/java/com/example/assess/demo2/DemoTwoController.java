@@ -1,6 +1,6 @@
 package com.example.assess.demo2;
 
-import com.example.assess.web.util.LoginCheck;
+import com.example.assess.config.LoginCheck;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

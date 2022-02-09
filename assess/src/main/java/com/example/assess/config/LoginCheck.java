@@ -1,4 +1,4 @@
-package com.example.assess.web.util;
+package com.example.assess.config;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

@@ -7,6 +7,15 @@ public class Car {
     private String model;
     private String colour;
     private String place;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getBrand() {
         return brand;

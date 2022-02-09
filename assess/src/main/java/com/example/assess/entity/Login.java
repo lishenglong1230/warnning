@@ -1,22 +1,27 @@
 package com.example.assess.entity;
 
 public class Login {
-    private String phone;
-    private String code;
+    private String username;
+    private String password;
 
-    public String getPhone() {
-        return phone;
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getUsername() {
+        return username;
     }
 
-    public String getCode() {
-        return code;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
