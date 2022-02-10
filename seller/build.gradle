@@ -5,12 +5,15 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     //common
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
     //oss
     implementation group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '3.13.0'
     //redis
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.6.3'
     //aspect
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
+
+
 }
 
 test {
