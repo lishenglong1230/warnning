@@ -51,8 +51,8 @@ subprojects {
         compile("org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}")
         compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}")
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.6.3'
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.6.1'
+        //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.6.3'
+        //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.6.1'
 
     }
 }

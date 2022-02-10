@@ -1,7 +1,9 @@
 package com.example.seller.entity;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class Oss {
     @Value("${spring.oss.endpoint}")
     String endpoint;
@@ -13,7 +15,7 @@ public class Oss {
     // 填写Bucket名称，例如examplebucket。
     @Value("${spring.oss.bucketName}")
     String bucketName;
-    @Value("${spring.oss.FileHost}")
+    @Value("${spring.oss.fileHost}")
     String fileHost;
 
     public String getEndpoint() {

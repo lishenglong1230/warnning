@@ -5,6 +5,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.*;
 import com.example.seller.entity.Oss;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.imageio.ImageIO;
@@ -18,6 +19,8 @@ import java.util.UUID;
 @Repository
 public class OssDao {
     private String FILE_URL=null;
+    @Autowired
+    private Oss oss;
 
     public  String upLoad(File file) {
         // 判断文件
@@ -39,12 +42,11 @@ public class OssDao {
         //地址信息
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String dateStr = format.format(new Date());
-        Oss oss=new Oss();
         // 创建OSSClient实例。
         OSSClient ossClient = new OSSClient(oss.getEndpoint(), oss.getAccessKeyId(),oss.getAccessKeySecret());
         //进行设置可以预览图片操作
         ObjectMetadata objectMetadata = new ObjectMetadata();
-        objectMetadata.setContentType("image/jpg");
+        objectMetadata.setContentType("image/png");
         try {
             // 判断容器是否存在,不存在就创建
             if (!ossClient.doesBucketExist(oss.getBucketName())) {

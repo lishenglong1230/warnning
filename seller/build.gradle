@@ -9,7 +9,7 @@ dependencies {
     //oss
     implementation group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '3.13.0'
     //redis
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.6.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.1.RELEASE'
     //aspect
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
 
