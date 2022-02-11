@@ -22,12 +22,12 @@ public class UserDao implements UserService {
 
     @Override
     public void deleteByName(String username) {
-        jdbcTemplate.update("delete from login where username = ?", username);
+         jdbcTemplate.update("delete from login where username = ?", username);
     }
 
     public User findByName(String name) {
         final User user = new User();
-        String sql = "SELECT username FROM user WHERE username=?";
+        String sql = "SELECT username FROM login WHERE username=?";
         jdbcTemplate.query(sql, new Object[]{name}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet resultSet) throws SQLException {
@@ -40,7 +40,7 @@ public class UserDao implements UserService {
     @Override
     public User findByNameAndPassword(String username, String password) {
         final User user = new User();
-        String sql = "SELECT * FROM user WHERE username=? AND password=?";
+        String sql = "SELECT * FROM login WHERE username=? AND password=?";
         jdbcTemplate.query(sql, new Object[]{username, password}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet resultSet) throws SQLException {

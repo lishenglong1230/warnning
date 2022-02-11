@@ -39,6 +39,7 @@ public class CacheImpl {
         }
         //执行当前被aop代理的方法
         Object proceed = joinPoint.proceed();//value 返回值
+        System.out.println(proceed+"aaaaaaaaaaaaaaaaaa");
         /*从切面值入点获取植入点方法*/
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         /*获取切入点方法*/

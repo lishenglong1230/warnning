@@ -33,7 +33,6 @@ public class OssController {
         }
         String filename = file.getOriginalFilename();
         try {
-            //注意两种方式不能混合使用 （不能上传使用OSS 下载使用本地这样会导致图片有错误）
                 //进行OSS上传方式
                 if (!"".equals(filename.trim())) {
                     File newFile = new File(filename);
@@ -47,7 +46,7 @@ public class OssController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return null;
+        return "error";
     }
 
 }
