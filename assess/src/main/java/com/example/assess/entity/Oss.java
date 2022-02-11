@@ -1,40 +1,61 @@
 package com.example.assess.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Oss {
-    private String invoice;
-    private String certificate;
-    private String accident;
-    private String maintenance;
+    @Value("${spring.oss.endpoint}")
+    String endpoint;
+    // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
+    @Value("${spring.oss.accessKeyId}")
+    String accessKeyId;
+    @Value("${spring.oss.accessKeySecret}")
+    String accessKeySecret;
+    // 填写Bucket名称，例如examplebucket。
+    @Value("${spring.oss.bucketName}")
+    String bucketName;
+    @Value("${spring.oss.fileHost}")
+    String fileHost;
 
-    public String getInvoice() {
-        return invoice;
+    public String getEndpoint() {
+        return endpoint;
     }
 
-    public void setInvoice(String invoice) {
-        this.invoice = invoice;
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 
-    public String getCertificate() {
-        return certificate;
+    public String getAccessKeyId() {
+        return accessKeyId;
     }
 
-    public void setCertificate(String certificate) {
-        this.certificate = certificate;
+    public void setAccessKeyId(String accessKeyId) {
+        this.accessKeyId = accessKeyId;
     }
 
-    public String getAccident() {
-        return accident;
+    public String getAccessKeySecret() {
+        return accessKeySecret;
     }
 
-    public void setAccident(String accident) {
-        this.accident = accident;
+    public void setAccessKeySecret(String accessKeySecret) {
+        this.accessKeySecret = accessKeySecret;
     }
 
-    public String getMaintenance() {
-        return maintenance;
+    public String getBucketName() {
+        return bucketName;
     }
 
-    public void setMaintenance(String maintenance) {
-        this.maintenance = maintenance;
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+    }
+
+    public String getFileHost() {
+        return fileHost;
+    }
+
+    public void setFileHost(String fileHost) {
+        this.fileHost = fileHost;
     }
 }
+
