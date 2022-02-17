@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.buyer.dao.CartMapper">
+  <resultMap id="BaseResultMap" type="com.example.buyer.pojo.Cart">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gid" jdbcType="VARCHAR" property="gid" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="goodsname" jdbcType="VARCHAR" property="goodsname" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, gid, uid, goodsname, price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cart
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cart
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.buyer.pojo.Cart">
+    insert into cart (id, gid, uid, 
+      goodsname, price)
+    values (#{id,jdbcType=VARCHAR}, #{gid,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{goodsname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.buyer.pojo.Cart">
+    insert into cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="goodsname != null">
+        goodsname,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.buyer.pojo.Cart">
+    update cart
+    <set>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.buyer.pojo.Cart">
+    update cart
+    set gid = #{gid,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      goodsname = #{goodsname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 根据用户id与商品id查询收藏夹表 -->
+  <select id="selectByUidAndGid" parameterType="cart" resultType="cart">
+  	select * from cart where uid=#{uid} and gid=#{gid}
+  </select>
+
+  <!-- 根据用户id查询收藏夹中的所有商品 -->
+  <select id="selectByuid" resultType="cart" parameterType="java.lang.String">
+  	select * from cart where uid=#{uid}
+  </select>
+
+  <!-- 根据用户id与商品id改变商品状态 （从购物车中删除商品）-->
+  <update id="updateByUidAndGid" parameterType="cart">
+  	delete from cart where uid=#{uid} and gid=#{gid}
+  </update>
+
+</mapper>

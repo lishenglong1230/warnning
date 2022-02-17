@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.buyer.dao.CarInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.buyer.pojo.CarInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="mileage" jdbcType="VARCHAR" property="mileage" />
+    <result column="national" jdbcType="VARCHAR" property="national" />
+    <result column="gearbox" jdbcType="VARCHAR" property="gearbox" />
+    <result column="displacement" jdbcType="VARCHAR" property="displacement" />
+    <result column="drive" jdbcType="VARCHAR" property="drive" />
+    <result column="fuel" jdbcType="VARCHAR" property="fuel" />
+    <result column="allocation" jdbcType="VARCHAR" property="allocation" />
+    <result column="seat" jdbcType="VARCHAR" property="seat" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, city, mileage, national, gearbox, displacement, drive, fuel, allocation, seat, 
+    date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from carinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from carinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.buyer.pojo.CarInfo">
+    insert into carinfo (id, city, mileage, 
+      national, gearbox, displacement, 
+      drive, fuel, allocation, 
+      seat, date)
+    values (#{id,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, #{mileage,jdbcType=VARCHAR}, 
+      #{national,jdbcType=VARCHAR}, #{gearbox,jdbcType=VARCHAR}, #{displacement,jdbcType=VARCHAR}, 
+      #{drive,jdbcType=VARCHAR}, #{fuel,jdbcType=VARCHAR}, #{allocation,jdbcType=VARCHAR}, 
+      #{seat,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.buyer.pojo.CarInfo">
+    insert into carinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="mileage != null">
+        mileage,
+      </if>
+      <if test="national != null">
+        national,
+      </if>
+      <if test="gearbox != null">
+        gearbox,
+      </if>
+      <if test="displacement != null">
+        displacement,
+      </if>
+      <if test="drive != null">
+        drive,
+      </if>
+      <if test="fuel != null">
+        fuel,
+      </if>
+      <if test="allocation != null">
+        allocation,
+      </if>
+      <if test="seat != null">
+        seat,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null">
+        #{mileage,jdbcType=VARCHAR},
+      </if>
+      <if test="national != null">
+        #{national,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null">
+        #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null">
+        #{displacement,jdbcType=VARCHAR},
+      </if>
+      <if test="drive != null">
+        #{drive,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="allocation != null">
+        #{allocation,jdbcType=VARCHAR},
+      </if>
+      <if test="seat != null">
+        #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.buyer.pojo.CarInfo">
+    update carinfo
+    <set>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null">
+        mileage = #{mileage,jdbcType=VARCHAR},
+      </if>
+      <if test="national != null">
+        national = #{national,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null">
+        gearbox = #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null">
+        displacement = #{displacement,jdbcType=VARCHAR},
+      </if>
+      <if test="drive != null">
+        drive = #{drive,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        fuel = #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="allocation != null">
+        allocation = #{allocation,jdbcType=VARCHAR},
+      </if>
+      <if test="seat != null">
+        seat = #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.buyer.pojo.CarInfo">
+    update carinfo
+    set city = #{city,jdbcType=VARCHAR},
+      mileage = #{mileage,jdbcType=VARCHAR},
+      national = #{national,jdbcType=VARCHAR},
+      gearbox = #{gearbox,jdbcType=VARCHAR},
+      displacement = #{displacement,jdbcType=VARCHAR},
+      drive = #{drive,jdbcType=VARCHAR},
+      fuel = #{fuel,jdbcType=VARCHAR},
+      allocation = #{allocation,jdbcType=VARCHAR},
+      seat = #{seat,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

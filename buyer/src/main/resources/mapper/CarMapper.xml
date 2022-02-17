@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.buyer.dao.CarMapper">
+  <resultMap id="BaseResultMap" type="com.example.buyer.pojo.Car">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="series" jdbcType="VARCHAR" property="series" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="colour" jdbcType="VARCHAR" property="colour" />
+    <result column="place" jdbcType="VARCHAR" property="place" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, brand, series, rate, model, colour, place
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.buyer.pojo.Car">
+    insert into car (id, brand, series, 
+      rate, model, colour, 
+      place)
+    values (#{id,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR}, #{series,jdbcType=VARCHAR}, 
+      #{rate,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{colour,jdbcType=VARCHAR}, 
+      #{place,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.buyer.pojo.Car">
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="series != null">
+        series,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="colour != null">
+        colour,
+      </if>
+      <if test="place != null">
+        place,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null">
+        #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="colour != null">
+        #{colour,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        #{place,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.buyer.pojo.Car">
+    update car
+    <set>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null">
+        series = #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="colour != null">
+        colour = #{colour,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.buyer.pojo.Car">
+    update car
+    set brand = #{brand,jdbcType=VARCHAR},
+      series = #{series,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      colour = #{colour,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 查询所有商品 -->
+  <select id="selectCarsAll" resultType="car">
+  	select * from car;
+  </select>
+
+  <!-- 模糊查询商品 -->
+  <select id="selectByInp" resultType="car" parameterType="java.lang.String">
+  	select * from car where concat(brand,series,model,colour) like #{inp}
+  </select>
+</mapper>
