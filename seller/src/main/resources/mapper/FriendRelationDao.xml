@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chat.dao.FriendRelationDao">
+
+    <resultMap type="com.example.chat.entity.FriendRelation" id="FriendRelationMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="fromcode" column="fromCode" jdbcType="VARCHAR"/>
+        <result property="friendid" column="friendId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="FriendRelationMap">
+        select
+          id, fromCode, friendId
+        from friend_relation
+        where  = #{}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FriendRelationMap">
+        select
+          id, fromCode, friendId
+        from friend_relation
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="fromcode != null and fromcode != ''">
+                and fromCode = #{fromcode}
+            </if>
+            <if test="friendid != null and friendid != ''">
+                and friendId = #{friendid}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from friend_relation
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="fromcode != null and fromcode != ''">
+                and fromCode = #{fromcode}
+            </if>
+            <if test="friendid != null and friendid != ''">
+                and friendId = #{friendid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into friend_relation(id, fromCode, friendId)
+        values (#{id}, #{fromcode}, #{friendid})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into friend_relation(id, fromCode, friendId)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.id}, #{entity.fromcode}, #{entity.friendid})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into friend_relation(id, fromCode, friendId)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.fromcode}, #{entity.friendid})
+        </foreach>
+        on duplicate key update
+        id = values(id),
+        fromCode = values(fromCode),
+        friendId = values(friendId)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update friend_relation
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="fromcode != null and fromcode != ''">
+                fromCode = #{fromcode},
+            </if>
+            <if test="friendid != null and friendid != ''">
+                friendId = #{friendid},
+            </if>
+        </set>
+        where  = #{}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from friend_relation where  = #{}
+    </delete>
+
+</mapper>
+
