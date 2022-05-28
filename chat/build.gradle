@@ -1,8 +1,22 @@
 apply plugin: 'org.springframework.boot'
 
+
+
 dependencies {
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
+    implementation  'io.netty:netty-all:4.1.4.Final'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+
+    compileOnly("org.projectlombok:lombok:1.18.8")
+    annotationProcessor("org.projectlombok:lombok:1.18.8")
+    testCompileOnly("org.projectlombok:lombok:1.18.8")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.8")
 }
 
 test {

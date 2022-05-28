@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chat.mapper.NettyMapper">
+    <insert id="addFriend" parameterType="string">
+        insert into friend_relation (fromCode,toCode)
+        values (#{fromCode},#{toCode})
+    </insert>
+
+    <select id="getAllFriend" resultType="com.example.chat.entity.Friend">
+        select * from friend_relation WHERE fromCode = #{fromCode}
+    </select>
+
+    <select id="getAllMessage" resultType="com.example.chat.entity.Message">
+        select * from message WHERE fromCode = #{fromCode} AND toCode = #{toCode}
+    </select>
+
+    <insert id="AddMessage" parameterType="com.example.chat.entity.Message">
+        insert into message (fromCode,toCode,content,sendTime)
+        values (#{fromCode},#{toCode},#{content},#{sendTime})
+    </insert>
+</mapper>
