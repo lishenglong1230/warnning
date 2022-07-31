@@ -85,7 +85,7 @@ public class NioWebSocketHandler extends SimpleChannelInboundHandler<TextWebSock
 
                 Channel channel = channelMap.get(toCode);
                 if (channel == null) {
-                    ctx.ch().writeAndFlush(new TextWebSocketFrame("对方已经下线"));
+                    ctx.channel().writeAndFlush(new TextWebSocketFrame("对方已经下线"));
                 } else {
                     channel.writeAndFlush(new TextWebSocketFrame(JsonUtil.getJson(message)));
                 }

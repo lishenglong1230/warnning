@@ -1,7 +1,10 @@
 package com.example.chat.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class RestMsg<T> implements Serializable {
 
     private int code;
@@ -34,15 +37,4 @@ public class RestMsg<T> implements Serializable {
         restMsg.setMsg(msg);
         return restMsg;
     }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-    public void setData(T data) {
-        this.data = data;
-    }
-
 }
